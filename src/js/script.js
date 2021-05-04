@@ -85,14 +85,14 @@
       const thisProduct = this;
 
       /* find the clickable trigger (the element that should react to clicking) */
-      const clickableTrigger = document.querySelector(select.menuProduct.clickable);
+      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
       /* START: add event listener to clickable trigger on event click */
       clickableTrigger.addEventListener('click', function(event) {
         /* prevent default action for event */
         event.preventDefault();
         /* find active product (product that has active class) */
-        const activeProduct = document.querySelector(classNames.menuProduct.wrapperActive);
+        const activeProduct = document.querySelector(select.all.menuProductsActive);
         /* if there is active product and it's not thisProduct.element, remove class active from it */
         if(activeProduct != null && activeProduct != thisProduct.element) {
           activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
@@ -136,6 +136,3 @@
 
   app.init();
 }
-
-// TO BE REMOVED
-alert('Nie wiem dlaczego pączek toggluje wszystkim...?\r\n\r\nOne doughnut to rule them all,\r\none doughnut to find them,\r\nOne doughnut to bring them all,\r\nand in the darkness bind them;\r\nIn the Land of Mordor where the shadows lie.');
