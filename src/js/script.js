@@ -200,7 +200,8 @@
       const thisWidget = this;
 
       thisWidget.getElements(element);
-      thisWidget.setValue(thisWidget.input.value);
+      /* thisWidget.setValue(thisWidget.input.value); <- to podaje sama Kodilla? akapit nad "Dodanie reakcji na eventy" */
+      thisWidget.setValue(settings.amountWidget.defaultValue);
       thisWidget.initActions();
     }
 
@@ -223,9 +224,8 @@
         thisWidget.value = newValue;
       }
 
-      thisWidget.announce();
+      thisWidget.announce(); // śmiga mimo braku przeniesienia, mój drugi strzał to wrzucenie na koniec ifa
 
-      thisWidget.value = newValue;
       thisWidget.input.value = thisWidget.value;
     }
 
@@ -271,5 +271,3 @@
 
   app.init();
 }
-
-alert('Nic nie działa...');
