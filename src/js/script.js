@@ -208,10 +208,11 @@
           }
         }
       }
-      /* multiply price by amount */
-      price *= thisProduct.amountWidget.value;
+
       // dodatek z prepareCartProduct
       thisProduct.priceSingle = price;
+      /* multiply price by amount */
+      price *= thisProduct.amountWidget.value;
       //update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
@@ -256,8 +257,8 @@
         // create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}
         params[paramId] = {
           label: param.label,
-          options: {}
-        }
+          options: {},
+        };
         // for every option in this category
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
@@ -267,11 +268,13 @@
 
           if(optionSelected) {
             //option is selected
-            //params[paramId].options = nie wiem, sami sie nie stresujcie;
+            params[paramId].options[optionId] = option.label;
           }
         }
+        
       }
       return params;
+
     }
   }
 
