@@ -534,6 +534,8 @@
         name: thisCartProduct.name,
         params: thisCartProduct.params,
       };
+
+      return payloadSummary;
     }
   }
 
