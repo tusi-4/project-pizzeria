@@ -30,7 +30,7 @@ class AmountWidget{
 
     thisWidget.announce(); // śmiga mimo braku przeniesienia, mój drugi strzał to wrzucenie na koniec ifa
 
-    thisWidget.input.valuee = thisWidget.value;
+    thisWidget.input.value = thisWidget.value;
   }
 
   initActions(){
