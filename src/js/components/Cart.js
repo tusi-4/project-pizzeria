@@ -91,9 +91,9 @@ class Cart{
 
     menuProduct.dom.wrapper.remove();
 
-    const indexOfProduct = thisCart.products.indexOf(menuProduct);
+    // const indexOfProduct = thisCart.products.indexOf(menuProduct);
 
-    const removeProduct = thisCart.products.splice(indexOfProduct, 1);
+    // const removeProduct = thisCart.products.splice(indexOfProduct, 1);
 
     thisCart.update();
   }
