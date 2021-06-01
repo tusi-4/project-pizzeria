@@ -8,7 +8,7 @@ class AmountWidget extends BaseWidget{
     const thisWidget = this;
 
     thisWidget.getElements(element);
-    thisWidget.setValue(); // dodalam do konstruktora zainspirowana forum M-GT & PW i w widgecie wartosc jest dobra, w koszyku znowu zla
+    thisWidget.setValue(thisWidget.dom.input.value); // z tym argumentem dziala sztukarka i wszystko inne tez - podejrzane
     thisWidget.initActions();
   }
 
