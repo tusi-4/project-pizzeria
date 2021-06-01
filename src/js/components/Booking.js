@@ -11,7 +11,8 @@ class Booking {
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
-    thisBooking.initTables();
+    // przygotuje w konstruktorze wlasciwosc, ktora w zalozeniu bedzie przechowywac informacje o wybranym stoliku
+    // czyli jakas moja wlasna funkcja? cheezus
   }
 
   getData(){
@@ -157,27 +158,24 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
-    // chyba referncje do diva ze stolikami juz mamy powyzej?
+    // div ze stolikami
+    thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector('.floor-plan');
   }
 
-  initTables(){
+  initTables(event){
     const thisBooking = this;
-
+    
     for(let table of thisBooking.dom.tables){
-      table.addEventListener('click', function(event){
-        event.preventDefault();
-
-        if(table.classList.contains(classNames.booking.tableBooked)){
-          alert('This table has been booked. Please, choose another table.');
+      if(table.classList.contains('table')){
+        if(event.target.classList.contains(classNames.booking.tableBooked)){
+          // juz nawet alert zle dziala...
+          alert("This table has been booked. Please, choose another table.");
+        } else if(event.target.classList.contains('selected')){
+            event.target.classList.remove('selected');
         } else {
-          if(table.classList.contains('selected')){
-            table.classList.remove('selected');
-          } else {
-            table.classList.add('selected');
-            // madra linijka o usunieciu selecteda z innych stolikow jesli nie sa tym stolikiem
-          }
+          event.target.classList.add('selected');
         }
-      });      
+      }
     }
   }
 
@@ -197,11 +195,12 @@ class Booking {
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
-    /* kosola twierdzi, ze to nie jest funkcja:
-    thisBooking.dom.tables.addEventListener('click', function(){
-      thisBooking.initTables();
-    })
-    */
+    
+    thisBooking.dom.floorPlan.addEventListener('click', function(){
+      // event.preventDefault();
+      thisBooking.initTables(event);
+    });
+    
   }
 }
 
