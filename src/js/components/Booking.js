@@ -11,8 +11,6 @@ class Booking {
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
-    // przygotuje w konstruktorze wlasciwosc, ktora w zalozeniu bedzie przechowywac informacje o wybranym stoliku
-    // czyli jakas moja wlasna funkcja? cheezus
   }
 
   getData(){
@@ -142,6 +140,8 @@ class Booking {
       } else {
         table.classList.remove(classNames.booking.tableBooked);
       }
+
+      table.classList.remove(classNames.booking.tableSelected);
     }
   }
 
@@ -158,22 +158,30 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
-    // div ze stolikami
     thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector('.floor-plan');
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
+    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.address);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
+
+    thisBooking.dom.form = thisBooking.dom.wrapper.querySelector('.booking-form');
   }
 
   initTables(event){
     const thisBooking = this;
     
-    for(let table of thisBooking.dom.tables){
-      if(table.classList.contains('table')){
-        if(event.target.classList.contains(classNames.booking.tableBooked)){
-          // juz nawet alert zle dziala...
-          alert("This table has been booked. Please, choose another table.");
-        } else if(event.target.classList.contains('selected')){
-            event.target.classList.remove('selected');
+    if(event.target.classList.contains('table')){
+      if(event.target.classList.contains(classNames.booking.tableBooked)){
+        alert('This table has been booked. Please, choose another table.');
+      } else {
+        if(event.target.classList.contains(classNames.booking.tableSelected)){
+          event.target.classList.remove(classNames.booking.tableSelected);
+          thisBooking.selectedTable = null;
         } else {
-          event.target.classList.add('selected');
+          for(let table of thisBooking.dom.tables){
+            table.classList.remove(classNames.booking.tableSelected);
+          }
+          event.target.classList.add(classNames.booking.tableSelected);
+          thisBooking.selectedTable = event.target.getAttribute(settings.booking.tableIdAttribute);
         }
       }
     }
@@ -196,11 +204,48 @@ class Booking {
       thisBooking.updateDOM();
     });
     
-    thisBooking.dom.floorPlan.addEventListener('click', function(){
-      // event.preventDefault();
+    thisBooking.dom.floorPlan.addEventListener('click', function(event){
       thisBooking.initTables(event);
     });
+
+    thisBooking.dom.form.addEventListener('submit', function(event){ 
+      event.preventDefault();
+      thisBooking.sendBooking();
+    });
     
+  }
+
+  sendBooking(){
+    const thisBooking = this;
+
+    const url = settings.db.url + '/' + settings.db.bookings;
+
+    const booking = {
+      date: thisBooking.datePicker.value,
+      hour: thisBooking.hourPicker.value,
+      table: parseInt(thisBooking.selectedTable),
+      duration: parseInt(thisBooking.hoursAmount.value),
+      ppl: parseInt(thisBooking.peopleAmount.value),
+      starters: [],
+      phone: thisBooking.dom.phone.value,
+      address: thisBooking.dom.address.value,
+    };
+
+    for(let starter of thisBooking.dom.starters){
+      if(starter.checked == true){
+        booking.starters.push(starter.value);
+      }
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(booking),
+    };
+
+    fetch(url, options);
   }
 }
 
