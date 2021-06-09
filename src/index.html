@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -22,6 +23,7 @@
         </div>
 
         <div class="main-nav">
+            <a href="#home">Home</a>
             <a href="#order">Order</a>
             <a href="#booking">Booking</a>
         </div>
@@ -64,6 +66,114 @@
   </header>
 
   <div id="pages">
+    <section id="home"> <!-- HOME -->
+       <div class="home-wrapper container">
+        <article class="links">
+          <div class="links-row">
+            <div class="links-cell link-one-bg">
+              <div class="link-one">
+                <h1 class="h1">Order online</h1>
+                <p>Delicious food delivered to your door</p>
+              </div>
+            </div>
+            <div class="links-cell link-two-bg">
+              <div class="link-two">
+                <h1 class="h1">Book a table</h1>
+                <p>Our staff is waiting to welcome you</p>
+              </div>
+            </div>
+          </div>
+          <div class="links-row">
+            <div class="links-cell link-three">
+              <h1 class="h1">Opening hours:</h1>
+              <p>MON-SUN, 12PM - 12AM</p>
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <div class="main-carousel" data-flickity='{ "cellAlign": "center", "contain": true, "prevNextButtons": false, "wrapAround": true, "autoPlay": 3000 }'>
+            <div class="carousel-cell">
+              <div class="carousel-image">
+                <img src="images/home/pizza-3.jpg" alt="pizza">
+              </div>
+              <div class="carousel-text">
+                <h1>AMAZING SERVICE!</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+                <span>- Margaret Osborne</span>
+              </div>
+            </div>
+            <div class="carousel-cell">
+              <div class="carousel-image">
+                <img src="images/home/pizza-3.jpg" alt="pizza">
+              </div>
+              <div class="carousel-text">
+                <h1>AMAZING SERVICE!</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+                <span>- Margaret Osborne</span>
+              </div>
+            </div>
+            <div class="carousel-cell">
+              <div class="carousel-image">
+                <img src="images/home/pizza-3.jpg" alt="pizza">
+              </div>
+              <div class="carousel-text">
+                <h1>AMAZING SERVICE!</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+                <span>- Margaret Osborne</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="instagram">
+          <div class="instapost">
+            <img src="images/home/pizza-4.jpg" alt="Pizza">
+            <div class="instapost-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="instapost">
+            <img src="images/home/pizza-5.jpg" alt="Pizza">
+            <div class="instapost-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="instapost">
+            <img src="images/home/pizza-6.jpg" alt="Pizza">
+            <div class="instapost-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="instapost">
+            <img src="images/home/pizza-7.jpg" alt="Pizza">
+            <div class="instapost-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="instapost">
+            <img src="images/home/pizza-8.jpg" alt="Pizza">
+            <div class="instapost-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="instapost">
+            <img src="images/home/pizza-9.jpg" alt="Pizza">
+            <div class="instapost-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <a href="" target="_blank" class="instalink">View more on Instagram</a>
+        </article>
+        
+       </div> <!-- END OF HOME --> 
+     </section>
      <section id="order">
        <div id="product-list" class="product-list container"></div>
      </section>
@@ -250,6 +360,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 </html>
