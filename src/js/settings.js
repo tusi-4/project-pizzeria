@@ -65,6 +65,9 @@ export const select = {
     address: '.booking-form [name="address"]',
     starters: '.booking-form [name="starter"]',
   },
+  home: {
+    links: '.links-cell a',
+  },
   nav: {
     links: '.main-nav a',
   },
@@ -88,7 +91,10 @@ export const classNames = {
   },
   pages: {
     active: 'active',
-  }
+  },
+  home: {
+    active: 'active',
+  },
 };
 
 export const settings = {
