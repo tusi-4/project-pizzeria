@@ -19,9 +19,10 @@ class BaseWidget {
 
     const newValue = thisWidget.parseValue(value);
 
+    /* TODO: Add validation */
     if(thisWidget.correctValue !== newValue && thisWidget.isValid(newValue)) {
       thisWidget.correctValue = newValue;
-      thisWidget.announce();
+      thisWidget.announce(); // w JS Dziedziczenie klas announce jest wewnatrz ifa wiec ja tu swojego rowniez przenosze
     }
 
     thisWidget.renderValue();
